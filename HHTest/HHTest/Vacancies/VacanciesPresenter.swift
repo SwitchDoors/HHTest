@@ -6,21 +6,25 @@
 //  Copyright © 2019 Max Shcherbakov. All rights reserved.
 //
 
+// зачем это презентеру?
 import UIKit
 
+// final? зачем NSObject?
 class VacanciesPresenter: NSObject {
-    
+
     private let fetchCount = 50
 
     private let ddm = VacanciesDDM()
     
     private let vacanciesService = VacanciesService(api: VacanciesEndPoint.shared)
+  // isLoading здесь нигде не используется
     private var isLoading = false
     
     var view: VacanciesInput!
     
     private var currentPage: Int { return vacanciesService.vacancies.count % fetchCount }
-    
+
+  // мб лучше назвать loadNextVacancies?
     private func loadNext() {
         
         vacanciesService.loadNext { [weak self] (error) in
@@ -28,7 +32,8 @@ class VacanciesPresenter: NSObject {
             
         }
     }
-    
+
+  // эмм обновить ошибку? как понимать это объявление?
     private func update(error: Error?) {
         
         if let error = error {
@@ -38,7 +43,8 @@ class VacanciesPresenter: NSObject {
         
         let cellsData = vacanciesService.vacancies.map({ VacancyCellData(vac: $0) })
         ddm.data = .data(cellsData)
-        
+
+      // зачем писать self?
         self.view.stopPullToRefresh()
         self.view.updateData()
     }

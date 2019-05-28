@@ -8,13 +8,14 @@
 
 import UIKit
 
+// final? мб VacancyCell?
 class VacancieCell: VacanciesBaseCell {
     
     let name = UILabel()
     let salaryFrom = UILabel()
     
     override func configure() {
-        name.textColor = UIColor.black
+      name.textColor = UIColor.black // можно просто .black
         salaryFrom.textColor = UIColor.purple
         
         makeConstraints()

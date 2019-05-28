@@ -6,14 +6,17 @@
 //  Copyright © 2019 Max Shcherbakov. All rights reserved.
 //
 
+// зачем?
 import UIKit
 
 struct VacancyCellData {
     let name: String
     let salaryFrom: String
-    
+
+  // зачем сокращать?
     init(vac: Vacancy) {
         self.name = vac.name
+      // ну можно же через if let salary = vac.salary .. else { }
         self.salaryFrom = vac.salary?.from != nil ? "\(vac.salary!.from!)" : "N/A"
     }
 }
@@ -22,7 +25,8 @@ enum VacanciesDDMData {
     case data([VacancyCellData])
     case nothing
     case error(Error)
-    
+
+  // номер чего?
     var number: Int {
         switch self {
         case .data(let data): return data.count
@@ -31,6 +35,7 @@ enum VacanciesDDMData {
     }
 }
 
+// final? :nsobject?
 class VacanciesDDM: NSObject {
 
     var data: VacanciesDDMData = .nothing

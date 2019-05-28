@@ -6,8 +6,14 @@
 //  Copyright © 2019 Max Shcherbakov. All rights reserved.
 //
 
+// зачем тут uikit?
 import UIKit
 
+// мб стоило бы для начала определить интерфейс VacanciesService, а затем задать ему реализацию?
+// в интерефейсы задал бы методы с которыми можно работать, а так не очень понятно, что к чему
+
+// VacanciesService предполагается наследовать? если нет, то лучше сразу писать final
+// зачем наследоваться от NSObject?!
 class VacanciesService: NSObject {
     
     private let fetchCount = 50
@@ -28,9 +34,11 @@ class VacanciesService: NSObject {
     func loadNext(completion: @escaping (Error?) -> ()) {
         
         isLoading = true
+      // зачем определять pageNumber, если можно currentPage подставить как аргумент
         let pageNumber = currentPage
         api.vacancies(perPage: fetchCount, page: pageNumber, completion: { [weak self] result in
-            
+
+          // а в этом случае ошибку не возвратим?
             guard let self = self else { return }
             self.isLoading = false
             
@@ -43,7 +51,8 @@ class VacanciesService: NSObject {
             }
         })
     }
-    
+
+  // isLoading = false забыл
     func reset() {
         self.vacancies = []
     }

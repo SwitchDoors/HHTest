@@ -8,18 +8,22 @@
 
 import UIKit
 
+// мб final?
 class VacanciesVC: UIViewController {
     
     private let table = UITableView()
-    
+
+  // что такое ddm? и почему в VacanciesPresenter есть точно такоое же объявление "private let ddm = VacanciesDDM()" ?
     private let ddm = VacanciesDDM()
     
     var presenter: VacanciesOutput!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+      // для какой простоты? я вот еще больше запутался
         // Для простоты
+      // все привыкли, что int - это целочесленный тип. зачем это здесь?
         let int = VacanciesPresenter()
         int.view = self
         
@@ -75,6 +79,7 @@ private extension VacanciesVC {
         
         let constraints = [table.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                            table.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                           // зачем тут эти отступы? смотрится немного странно на экране
                            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
                            table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20)]
         

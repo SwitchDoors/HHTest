@@ -8,6 +8,8 @@
 
 import Foundation
 
+// те же замечания
+// непонятный нейминг. мб EmptyVacancyCell?
 class VacanciesNothingCell: VacanciesBaseCell {
     
     override func configure() {

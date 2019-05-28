@@ -8,6 +8,10 @@
 
 import UIKit
 
+// те же замечения, что и для Vacancy
+
+// какой смысл от введения этой модели? содержит только одно поле
+// во всех случаях Vacancies можно заменить на [Vacancy]
 struct Vacancies: Codable {
 
     let items: [Vacancy]
